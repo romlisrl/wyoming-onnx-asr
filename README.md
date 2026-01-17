@@ -49,7 +49,8 @@ onnx-community/whisper-large-v3-turbo
 ```
 `parakeet-v3` и `canary-1b-v2` поддерживают следующие языки: `"bg", "hr", "cs", "da", "nl", "en", "et", "fi", "fr", "de", "el", "hu", "it", "lv", "lt", "mt", "pl", "pt", "ro", "sk", "sl", "es", "sv", "ru", "uk"`
 
-Пример compose.yaml
+Пример compose.yaml:
+```
 services:
   whisper:
     image: ghcr.io/romlisrl/wyoming-onnx-asr-ha:latest
@@ -66,3 +67,4 @@ networks:
   ha_net:
     external: true
     name: ha_net
+```
