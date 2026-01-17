@@ -49,5 +49,20 @@ onnx-community/whisper-large-v3-turbo
 ```
 `parakeet-v3` и `canary-1b-v2` поддерживают следующие языки: `"bg", "hr", "cs", "da", "nl", "en", "et", "fi", "fr", "de", "el", "hu", "it", "lv", "lt", "mt", "pl", "pt", "ro", "sk", "sl", "es", "sv", "ru", "uk"`
 
-### Aддон для HA (только cpu):
-[![Open your Home Assistant instance and show the add-on store for this repository.](https://my.home-assistant.io/badges/supervisor_addon.svg)](https://my.home-assistant.io/redirect/supervisor_addon/?addon=f4ba1342_onnxasr&repository_url=https%3A%2F%2Fgithub.com%2Fmitrokun%2Fvoice-addons)
+Пример compose.yaml
+services:
+  whisper:
+    image: ghcr.io/romlisrl/wyoming-onnx-asr-ha:latest
+    container_name: whisper
+    restart: unless-stopped
+    ports:
+      - 10305:10305
+    command: --model gigaam-v3-ctc --uri tcp://0.0.0.0:10305 --quantization int8 --debug
+    volumes:
+      - /opt/haoss/whisper/data:/data
+    networks:
+      - ha_net
+networks:
+  ha_net:
+    external: true
+    name: ha_net
