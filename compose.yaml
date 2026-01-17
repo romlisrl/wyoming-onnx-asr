@@ -1,0 +1,20 @@
+services:
+  wyoming-onnxasr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: [
+       "--model", "gigaam-v3-ctc",
+#       "--model", "onnx-community/whisper-large-v3-turbo",
+      "--uri", "tcp://0.0.0.0:10305"
+    ]
+    environment:
+      - MODEL=gigaam-v3-ctc
+      # - QUANTIZATION=int8
+      # - PORT=10305
+
+    ports:
+      - "10305:10305"
+    volumes:
+      - ./local:/data
+    restart: unless-stopped
