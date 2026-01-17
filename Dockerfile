@@ -11,4 +11,4 @@ RUN pip install -r /app/requirements.txt \
 EXPOSE 10305
 
 ENTRYPOINT ["python3", "-m", "wyoming_onnxasr"]
-CMD ["--model", "gigaam-v2-ctc", "--uri", "tcp://0.0.0.0:10305"]
+CMD ["--model", "gigaam-v3-ctc", "--uri", "tcp://0.0.0.0:10305"]
