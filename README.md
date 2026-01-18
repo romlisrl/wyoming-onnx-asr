@@ -61,4 +61,6 @@ services:
     command: --model gigaam-v3-ctc --uri tcp://0.0.0.0:10305 --quantization int8 --debug
     volumes:
       - .local/data:/data
+    environment:
+      - HF_HOME=/data
 ```
